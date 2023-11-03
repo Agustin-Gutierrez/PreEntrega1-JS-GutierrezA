@@ -1,90 +1,10 @@
-let usuario1
-
 function welcome() {
-  
   const NOMBRE = prompt(
     "Bienvenido a CórdobaClimbs, por favor ingresa tu nombre:"
   );
 
-
-  let EDAD = prompt(
-    "Por favor ingresa tu edad:"
-  );
-  let esNumero = false;
-  
-  while (!esNumero) {
-    if (!isNaN(EDAD) && EDAD > 0 && EDAD < 60) {
-      esNumero = true;
-      console.log("¡Se ingresó un número válido!");
-    } else {
-      EDAD = prompt("No se ingresó un número válido. Inténtelo nuevamente:");
-    }
-  }
-
-
-  let TALLE = prompt(
-    "Por favor ingresa tu talle de calzado:"
-  );
-  esNumero = false;
-  
-  while (!esNumero) {
-    if (!isNaN(TALLE) && TALLE > 0 && TALLE < 60) {
-      esNumero = true;
-      console.log("¡Se ingresó un número de calzado válido!");
-    } else {
-      TALLE = prompt("No se ingresó un número de calzado válido. Inténtelo nuevamente:");
-    }
-  }
-
-
-  let CORREO = prompt(
-    "Por favor ingresa tu correo electrónico:"
-  );
-  let esCorreoValido = false;
-
-  while (!esCorreoValido) {
-  const regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  if (regexCorreo.test(CORREO)) {
-    esCorreoValido = true;
-    console.log("¡Se ingresó un correo electrónico válido!");
-  } else {
-    CORREO = prompt("No se ingresó un correo electrónico válido. Inténtelo nuevamente:");
-  }
-}
-
-
-  // Clase constructora para almacenar datos del usuario
-
-  class userCreator {
-    constructor(nombre, edad, talle, correo) {
-
-      this.nombre = nombre;
-      this.edad = edad;
-      this.talle = talle;
-      this.correo = correo;
-
-      }
-  }
-  
-  usuario1 = new userCreator(NOMBRE,EDAD,TALLE,CORREO);
-  console.log(usuario1);
-
-  // Muestra los datos ingresados
-  ingresedData(usuario1);
-
   // Llame a la función con el mensaje de bienvenida
-  welcomeMessage(usuario1.nombre);
-
-}
-
-function ingresedData(usuario1) {
-  alert(
-    '- Nombre: ' + usuario1.nombre +
-    '\n- Edad: ' + usuario1.edad +
-    '\n- Talle de calzado: ' + usuario1.talle +
-    '\n- Correo: ' + usuario1.correo 
-  );
+  welcomeMessage(NOMBRE);
 }
 
 function welcomeMessage(NOMBRE) {
@@ -97,25 +17,16 @@ function welcomeMessage(NOMBRE) {
 
 // Función para mostrar las opciones del menú en la consola
 function displayMenu() {
-
-  // Array con los elementos del menú
-  const elementos = [
-    "Elija el factor a tener en cuenta (ingrese el número deseado):",
-    "1. La morfología de su pie",
-    "2. El uso que harás del pie de gato",
-    "3. Tu nivel de experiencia",
-    "4. Presupuesto",
-    "5. Salir"
-  ];
-  
-  // Recorrer el array utilizando un bucle for
-  for (let i = 0; i < elementos.length; i++) {
-    console.log(elementos[i]);
-  }
+  console.log("Elija el factor a tener en cuenta (ingrese el número deseado):");
+  console.log("1. La morfología de su pie");
+  console.log("2. El uso que harás del pie de gato");
+  console.log("3. Tu nivel de experiencia");
+  console.log("4. Presupuesto");
+  console.log("5. Salir");
 }
 
 // Función para manejar el input del usuario y ejecutar la opción seleccionada
-function handleInput(option, usuario1) {
+function handleInput(option) {
   switch (option) {
     case "1":
       console.log("Opción 1 seleccionada");
@@ -165,10 +76,6 @@ function handleInput(option, usuario1) {
       }
       break;
     case "5":
-      console.log(usuario1);
-      alert(
-        "Enviaremos información a tu correo: '" + usuario1.correo + "'"
-      );
       console.log("Saliendo...");
       return;
     default:
@@ -190,7 +97,7 @@ function askOption() {
       "5. Salir"
   );
 
-  handleInput(option, usuario1);
+  handleInput(option);
 }
 
 // Llame a la función de bienvenida
